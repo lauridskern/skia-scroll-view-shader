@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
-import { Dimensions, PixelRatio, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedScrollHandler, useDerivedValue, useSharedValue } from 'react-native-reanimated';
-import { Canvas, Image as SkiaImage, useImage, Group, Rect, Paint, DisplacementMap, RadialGradient, vec, LinearGradient, ImageShader, translate } from '@shopify/react-native-skia';
+import { Canvas, Image as SkiaImage, useImage, Group, Rect, Paint, DisplacementMap, RadialGradient, vec, LinearGradient, ImageShader } from '@shopify/react-native-skia';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -43,7 +43,7 @@ const images = [
     title: 'Image 9',
   },
   {
-    url: 'https://via.placeholder.com/150',
+    url: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     title: 'Image 10',
   },
 ];
@@ -77,7 +77,7 @@ export default function App() {
             <Paint>
               <DisplacementMap channelX="r" channelY="g" scale={100}>
                 {/* workaround for "DisplacementMap expects a shader as child" */}
-                <RadialGradient r={0} c={vec(0, 0)} colors={['black', 'white']} />
+                <RadialGradient r={0} c={vec(0, 0)} colors={['black']} />
                 <ImageShader image={displacementMap} fit="fill" rect={{ x: (screenWidth - displacementMapWidth) / 2, y: (screenHeight - displacementMapHeight) / 2, width: displacementMapWidth, height: displacementMapHeight }} />
               </DisplacementMap>
             </Paint>
